@@ -11,6 +11,7 @@ namespace MusicApi.Data
 		}
 
 		public DbSet<Song> Songs { get; set; }
-	}
-}
 
+        public DbSet<Album> Albums { get; set; }
+    }
+}
