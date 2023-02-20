@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace MusicApi.Models
 {
     // Song class
@@ -6,10 +8,16 @@ namespace MusicApi.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public string? Artist { get; set; }
 
+        [Required]
         public string? SongTitle { get; set; }
 
+        [Required]
+        public int SongLength { get; set; }
+
+        [Required]
         public string? Category { get; set; }
 
         // Foreign key to the album table
@@ -23,8 +31,7 @@ namespace MusicApi.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public string? AlbumTitle { get; set; }
-
-        public List<Song>? Songs { get; set; }
     }
 }

@@ -25,11 +25,16 @@ namespace MusicApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Song>>> GetSongs()
         {
-          if (_context.Songs == null)
-          {
-              return NotFound();
-          }
-            return await _context.Songs.ToListAsync();
+            if (_context.Songs == null)
+            {
+                return NotFound();
+            }
+
+            // Include the album class
+            var songs = await _context.Songs
+                .Include(s => s.Album).ToListAsync();
+
+            return songs;
         }
 
         // GET: api/Song/5
@@ -40,7 +45,12 @@ namespace MusicApi.Controllers
           {
               return NotFound();
           }
-            var song = await _context.Songs.FindAsync(id);
+
+            // Hämta alla låtar och hämta in alla album + properties
+            var songs = await _context.Songs.Include(s => s.Album).ToListAsync();
+
+            var song = songs.FirstOrDefault(s => s.Id == id);
+
 
             if (song == null)
             {
