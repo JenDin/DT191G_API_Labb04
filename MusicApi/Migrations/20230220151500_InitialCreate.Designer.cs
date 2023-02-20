@@ -10,7 +10,7 @@ using MusicApi.Data;
 namespace MusicApi.Migrations
 {
     [DbContext(typeof(MusicContext))]
-    [Migration("20230217114741_InitialCreate")]
+    [Migration("20230220151500_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -26,12 +26,18 @@ namespace MusicApi.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Artist")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Category")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("SongLength")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("SongTitle")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

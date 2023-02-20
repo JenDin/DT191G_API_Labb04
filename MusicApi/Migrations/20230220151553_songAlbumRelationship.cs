@@ -5,7 +5,7 @@
 namespace MusicApi.Migrations
 {
     /// <inheritdoc />
-    public partial class SongAlbumRelationship : Migration
+    public partial class songAlbumRelationship : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,7 +23,7 @@ namespace MusicApi.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    AlbumTitle = table.Column<string>(type: "TEXT", nullable: true)
+                    AlbumTitle = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

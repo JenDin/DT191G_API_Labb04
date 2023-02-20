@@ -23,6 +23,7 @@ namespace MusicApi.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("AlbumTitle")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -40,12 +41,18 @@ namespace MusicApi.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Artist")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Category")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("SongLength")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("SongTitle")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -58,17 +65,12 @@ namespace MusicApi.Migrations
             modelBuilder.Entity("MusicApi.Models.Song", b =>
                 {
                     b.HasOne("MusicApi.Models.Album", "Album")
-                        .WithMany("Songs")
+                        .WithMany()
                         .HasForeignKey("AlbumId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Album");
-                });
-
-            modelBuilder.Entity("MusicApi.Models.Album", b =>
-                {
-                    b.Navigation("Songs");
                 });
 #pragma warning restore 612, 618
         }

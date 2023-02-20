@@ -30,9 +30,9 @@ namespace MusicApi.Controllers
                 return NotFound();
             }
 
-            // Include the album class
-            var songs = await _context.Songs
-                .Include(s => s.Album).ToListAsync();
+                // Include the album class
+                var songs = await _context.Songs
+                    .Include(s => s.Album).ToListAsync();
 
             return songs;
         }
@@ -45,17 +45,15 @@ namespace MusicApi.Controllers
           {
               return NotFound();
           }
-
-            // Hämta alla låtar och hämta in alla album + properties
             var songs = await _context.Songs.Include(s => s.Album).ToListAsync();
 
             var song = songs.FirstOrDefault(s => s.Id == id);
-
 
             if (song == null)
             {
                 return NotFound();
             }
+
 
             return song;
         }
