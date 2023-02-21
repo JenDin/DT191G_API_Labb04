@@ -45,9 +45,7 @@ namespace MusicApi.Controllers
           {
               return NotFound();
           }
-            var songs = await _context.Songs.Include(s => s.Album).ToListAsync();
-
-            var song = songs.FirstOrDefault(s => s.Id == id);
+            var song = await _context.Songs.Include(s => s.Album).FirstOrDefaultAsync(s => s.Id == id);
 
             if (song == null)
             {

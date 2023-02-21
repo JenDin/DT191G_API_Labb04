@@ -21,6 +21,7 @@ namespace MusicApi.Models
         public string? Category { get; set; }
 
         // Foreign key to the album table
+        [Required]
         public int AlbumId { get; set; }
 
         public Album? Album { get; set; }
