@@ -6,3 +6,5 @@ API:et hanterar en låtlista och det finns två ändpunkter:
 
 - /api/album
 - /api/song
+
+Databasen som används för att lagra data är en SQLite-databas.
